@@ -1,0 +1,122 @@
+#This program generates ....
+#
+
+listt = ["zav","zx","zbc","zcdd","zds","zd"] #6
+#listt = ["zabaglione","zabrawood","zaccab","zaffer","zalambdodont","zany","zap","zealot","zealous","zebra","zebu","zed","zee","zeitgeist","zel","zemindar","zenithal","zeolite","zephyr","zeppelin","zeroised","zeroth","zest","zeta","zeugen","zeus","ziggurat","zig","zag","zig","zagger","zillion","zincate","zincite","zincography","zingiberis","zinnia","zion","zipper","zirconium","zither","zloty","zoantharian","zodiacal","zoeaform","zoic","zollverein","zombie","zonal","zonation","zonda","zoned","zoning","zoocecidium","zoochlorella","zoochory","zooecium","zoogamete","zoogonidangium","zoogonous","zoogony","zooid","zoolatry","zoological","zoologist","zoology","zoomastigophora","zooming","zoomorphosis","zooophobia","zoophilic","zoophilous","zoophily","zoophobia","zoophyte","zooplankton","zoosporangiophore","zoosporangium","zoospore","zucchini","zulu","zwitterion","zygantrum","zygapophysis","zygography","zygomatic","zygomorphic","zygonema","zygosphene","zygospore","zygotene","zymase","zymochemistry","zymogen","zymosis"]
+letters=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+
+zn=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+zi=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+prob=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+length = len(listt)
+
+#---------------------------------------------------------------------------
+def funrec(pre1, num, lll): #num== 'num' veni letter eka
+	length = len(listt)
+	a=0 #listt eke a veni letter eka
+	b=0 #letters vala b veni letter eka
+
+#	if(num<=len(listt))
+	while b<26:
+		zi[b]=0
+		b=b+1
+	
+	a=0
+	while a<length: #listt eke okkoma check karanna
+		tmp=len(listt[a]) #index of last letter of current word
+		
+		#if num==tmp and a==length-1:
+		
+		
+		#followong to get probability of all letters
+		
+		if ( (num>=tmp) and (a==lll) ):
+			print ("Else but",a,num)
+			#probab(num)
+			init(a,num)
+			print "bye"
+			return
+		elif num>=tmp: #next word if last letter+1
+#			print ("Ter",a,num,listt[-1][-1])
+			#return
+			a+=1
+			continue
+		
+			'''
+		if (num>=2):
+			#print ("else but",a,num)
+			init(a,num)
+			print ("bye")
+			return
+		'''
+
+		else:
+			print ("Else",a,num)
+			init(a,num)
+			#probab(num)
+			#b=b+1
+		a=a+1
+	probab(num)
+	funrec(None,num+1, lll)
+#	return
+
+	
+		
+#----------------------------------------------------------------------------
+def probs():
+	print ("ok")
+#----------------------------------------------------------------------------		
+def probab(ind): #ind=index
+
+
+	
+	i=0
+	while (i<26):
+		prob[i]=zi[i]*1.0/len(listt)
+		print letters[i],prob[i]
+		i+=1
+		#return
+	
+#----------------------------------------------------------------------------
+#check the letter
+def init(a,num): #a=word num=letter
+	totw=len(listt)
+	tmp=len(listt[a]) #index of last letter of current word
+	#a=0
+	#while a<totw: #listt eke okkoma check karanna
+	b=0
+	while b<26: #'letters' eke letter ekka compare karanna
+	
+		if ( (num>=tmp) and (a==largest) ):
+			#print ("Else but",a,num)
+			#probab(num)
+			#init(a,num)
+			print "bye"
+			return
+		elif num>=tmp: #next word if last letter+1
+#			print ("Ter",a,num,listt[-1][-1])
+			#return
+			a+=1
+			continue
+			
+		if listt[a][num]==letters[b][0]:
+			zi[b]+=1
+				
+		b=b+1
+	#	a=a+1
+#----------------------------------------------------------------------------
+
+#find the index of the largest word
+largest=0
+a=0
+while a<length:
+	if len(listt[a])>=len(listt[largest]):
+		#largest=len(listt[a])
+		largest=a
+	a+=1
+print (largest)
+#init(1)
+#fun2(listt[0],1)		
+funrec(None, 0, largest)
+#print (listt[76])
+#probab()
